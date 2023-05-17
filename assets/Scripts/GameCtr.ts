@@ -93,11 +93,6 @@ export class GameCtr extends Component {
             let getColor = this.BirdCtr.getComponent(Sprite)
             getColor.color = Color.RED;
         }
-
-        // this.btnPlay.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
-        // this.btnTryAgain.on(Input.EventType.TOUCH_START, this.onTouchTryAgain, this);
-        //this.btnOption.on(Input.EventType.TOUCH_START, this.onTouchOption, this);
-        //this.btnCancel.on(Input.EventType.TOUCH_START, this.onTouchCancel, this);
     }
 
     update(deltaTime: number) {
@@ -151,13 +146,15 @@ export class GameCtr extends Component {
 
     movePipes() {
         for (let i = 0; i < this.pipe.length; i++) {
+
             var posX = this.pipe[i].position.x;
-            // console.log(posX);
             var posY = this.pipe[i].position.y;
+
             posX -= 1.0;
 
             //check pass pipe, add score
             var posBird = this.BirdCtr.node.position.x
+            
             if(posX == posBird){
                 this.result.addScore();
             }
@@ -176,7 +173,6 @@ export class GameCtr extends Component {
 
     onTouchStart(event: EventTouch) {
         this.btnPlay.active = false;
-        // this.turnOffOption();
         this.isClick = true;
         this.createPipes();       
         this.btnOption.active = false;
@@ -185,29 +181,22 @@ export class GameCtr extends Component {
 
     onTouchTryAgain() {
         director.loadScene('main');
-        // this.result.hideResults();
         this.startGame();
     }
 
     onTouchOption() {
-        // this.bgOption.node.active = true;
-        // this.btnCancel.active = true;
-        // this.labelOption.node.active = true;
         director.loadScene('menu')
     }
 
     startGame() {
         this.result.hideResults();
         director.resume();
-        // console.log(this.BirdCtr)
         this.BirdCtr.birdFly();
-        // console.log(this.BirdCtr.birdFly());
     }
 
     gameOver() {
         this.result.showResults();
         director.pause();
-        // this.result.saveScore()
     }
 
     onCollisionEnter () {

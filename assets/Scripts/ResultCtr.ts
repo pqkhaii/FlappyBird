@@ -12,35 +12,33 @@ export class ResultCtr extends Component {
     @property({
         type: Label
     })
-    public HighScore: Label;
+    private HighScore: Label;
 
     @property({
         type: Node
     })
-    public ResultEnd: Node;
+    private ResultEnd: Node;
 
     @property({
         type : Sprite
     })
-    public bgScore : Sprite
+    private bgScore : Sprite
 
     @property({
         type : Sprite
     })
-    public bgGameOver : Sprite
+    private bgGameOver : Sprite
 
 
     maxScore: number = 0;
     currentScore: number = 0;
 
-    public maxScoreStorage : number = 0;
+    private maxScoreStorage : number = 0;
     private scoreArray : number[] = [];
 
     updateScore(num: number) {
         this.currentScore = num;
         
-        // sys.localStorage.setItem('score', JSON.stringify(this.currentScore));
-        // var score = JSON.parse(sys.localStorage.getItem('score'));
         this.ScoreLabel.string = ('' + this.currentScore);
         // console.log(userData)
     }
@@ -60,13 +58,12 @@ export class ResultCtr extends Component {
 
     showResults() {
         this.scoreArray.push(this.currentScore);
-        sys.localStorage.setItem('score', JSON.stringify(this.scoreArray));
 
+        sys.localStorage.setItem('score', JSON.stringify(this.scoreArray));
         var getScore = JSON.parse(sys.localStorage.getItem('score'));
 
         this.HighScore.string = '' + Math.max(...getScore)
         
-
         this.ResultEnd.active = true;
         this.HighScore.node.active = true;
         this.bgScore.node.active = true;
