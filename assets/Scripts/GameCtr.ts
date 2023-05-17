@@ -57,11 +57,11 @@ export class GameCtr extends Component {
 
     onLoad(){
 
-        // let parameters = find('parameters');
-        // console.log(parameters)
-        // //let BirdParameters = parameters.getComponent('SaveNode');
-        // let BirdParameters = parameters.getComponent(SaveNode);
-        // console.log(BirdParameters)
+        let parameters = find('parameters');
+        console.log(parameters)
+        //let BirdParameters = parameters.getComponent('SaveNode');
+        let BirdParameters = parameters.getComponent(SaveNode);
+        console.log(BirdParameters)
 
 
         this.isClick = false;

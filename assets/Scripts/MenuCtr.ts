@@ -5,10 +5,10 @@ const { ccclass, property } = _decorator;
 @ccclass('MenuCtr')
 export class MenuCtr extends Component {
 
-    @property({
-        type: SaveNode
-    })
-    private SaveNode : SaveNode;
+    // @property({
+    //     type: SaveNode
+    // })
+    // private SaveNode : SaveNode;
     
     public NodeSaveBlue : boolean = false;
     public NodeSaveRed : boolean = false;
@@ -29,7 +29,7 @@ export class MenuCtr extends Component {
         // this.SaveNode.getComponent(SaveNode).NodeSaveRed = this.SaveNode.NodeSaveRed;
         this.NodeSaveRed = true;
         this.NodeSaveBlue = false;
-        director.loadScene('main')
+        // director.loadScene('main')
     }
 
     onTouchBtnBlue() {
@@ -37,7 +37,7 @@ export class MenuCtr extends Component {
         // this.SaveNode.getComponent(SaveNode).NodeSaveRed = this.SaveNode.NodeSaveRed;
         this.NodeSaveBlue = true;
         this.NodeSaveRed = false;
-        director.loadScene('main')
+        // director.loadScene('main')
     }
 
     
