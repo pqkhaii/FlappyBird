@@ -6,20 +6,19 @@ export class SaveNode extends Component {
     public NodeSaveBlue : boolean = false;
     public NodeSaveRed : boolean = false;
 
-    public test:number = 1;
-
     onTouchBtnRed() {
-        // this.SaveNode.getComponent(SaveNode).NodeSaveBlue = this.SaveNode.NodeSaveBlue;
-        // this.SaveNode.getComponent(SaveNode).NodeSaveRed = this.SaveNode.NodeSaveRed;
         this.NodeSaveRed = true;
         this.NodeSaveBlue = false;
+        director.addPersistRootNode(this.node)
+        director.loadScene('main')
     }
 
     onTouchBtnBlue() {
-        // this.SaveNode.getComponent(SaveNode).NodeSaveBlue = this.SaveNode.NodeSaveBlue;
-        // this.SaveNode.getComponent(SaveNode).NodeSaveRed = this.SaveNode.NodeSaveRed;
         this.NodeSaveBlue = true;
         this.NodeSaveRed = false;
+        director.addPersistRootNode(this.node)
+        director.loadScene('main')
     }
+
 }
 

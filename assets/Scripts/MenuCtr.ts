@@ -13,34 +13,26 @@ export class MenuCtr extends Component {
     public NodeSaveBlue : boolean = false;
     public NodeSaveRed : boolean = false;
 
+    public NodeSaveAll : boolean = false;
+
     start() {
-        let parameters = new Node('Parameters');
-        let flappyBirdParameters = parameters.addComponent(SaveNode);
-        flappyBirdParameters.NodeSaveBlue = true;
-        flappyBirdParameters.test = 2
+        // let parameters = new Node('Parameters');
+        // let flappyBirdParameters = parameters.addComponent(SaveNode);
+        
+        // if(this.NodeSaveBlue == true ){
+        //     flappyBirdParameters.NodeSaveAll = true;
+        // }
 
+        // if(this.NodeSaveRed == true){
+        //     flappyBirdParameters.NodeSaveAll = false;
+        // }
 
-        director.addPersistRootNode(parameters)
-        // director.loadScene('main')
+        // console.log(flappyBirdParameters.NodeSaveAll)
+
+        // director.addPersistRootNode(parameters)
+        // // director.loadScene('main')
     }
 
-    onTouchBtnRed() {
-        // this.SaveNode.getComponent(SaveNode).NodeSaveBlue = this.SaveNode.NodeSaveBlue;
-        // this.SaveNode.getComponent(SaveNode).NodeSaveRed = this.SaveNode.NodeSaveRed;
-        this.NodeSaveRed = true;
-        this.NodeSaveBlue = false;
-        // director.loadScene('main')
-    }
-
-    onTouchBtnBlue() {
-        // this.SaveNode.getComponent(SaveNode).NodeSaveBlue = this.SaveNode.NodeSaveBlue;
-        // this.SaveNode.getComponent(SaveNode).NodeSaveRed = this.SaveNode.NodeSaveRed;
-        this.NodeSaveBlue = true;
-        this.NodeSaveRed = false;
-        // director.loadScene('main')
-    }
-
-    
 
     onTouchCancel() {
 

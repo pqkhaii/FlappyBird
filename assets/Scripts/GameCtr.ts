@@ -1,4 +1,4 @@
-import { _decorator, Component, EventKeyboard, KeyCode, Node, EventTouch, Prefab, instantiate, director, Contact2DType, Collider2D, IPhysics2DContact, Input, input, Button, sys, Sprite, Label, color, Color, find} from 'cc';
+import { _decorator, Component, EventKeyboard, KeyCode, Node, EventTouch, Prefab, instantiate, director, Contact2DType, Collider2D, IPhysics2DContact, Input, input, Button, sys, Sprite, Label, color, Color, find, url, SpriteFrame, Texture2D, TextAsset, resources, ImageAsset} from 'cc';
 const { ccclass, property } = _decorator;
 
 import { BgCtr } from './BgCtr';
@@ -57,13 +57,6 @@ export class GameCtr extends Component {
 
     onLoad(){
 
-        let parameters = find('parameters');
-        console.log(parameters)
-        //let BirdParameters = parameters.getComponent('SaveNode');
-        let BirdParameters = parameters.getComponent(SaveNode);
-        console.log(BirdParameters)
-
-
         this.isClick = false;
         this.isCreatePipe = false;
         
@@ -71,6 +64,35 @@ export class GameCtr extends Component {
 
         this.result.hideResults();
         this.result.ScoreLabel.node.active = false;
+
+        let parameters = find('Persist_Node');
+        console.log(parameters)
+        let BirdParameters = parameters.getComponent(SaveNode);
+        if(BirdParameters.NodeSaveBlue == true ){
+
+            // const url = 'asset/Images/birdgreen1.png';
+            // resources.load(url, ImageAsset, (err: any, imageAsset) => {
+            //     const sprite = this.BirdCtr.getComponent(Sprite);
+            //     const spriteFrame = new SpriteFrame();
+            //     const tex = new Texture2D();
+            //     tex.image = imageAsset;
+            //     spriteFrame.texture = tex;
+            //     sprite.spriteFrame = spriteFrame;
+            // });
+
+            // // var urlImage = 'asset/Images/birdgreen1.png'
+            // // let texture = textureCache.addImage
+            // // this.BirdCtr.getComponent(Sprite).spriteFrame= new SpriteFrame(texture); 
+            // console.log("Blue")
+
+            let getColor = this.BirdCtr.getComponent(Sprite)
+            getColor.color = Color.BLUE;
+        }
+
+        if(BirdParameters.NodeSaveRed == true){
+            let getColor = this.BirdCtr.getComponent(Sprite)
+            getColor.color = Color.RED;
+        }
 
         // this.btnPlay.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
         // this.btnTryAgain.on(Input.EventType.TOUCH_START, this.onTouchTryAgain, this);
@@ -119,7 +141,7 @@ export class GameCtr extends Component {
             var posY = this.pipe[i].position.y;
 
             posX = 500 + (350 * i) ; // space of pipes
-            var minY = -260;
+            var minY = -360;
             var maxY = -720;
             posY = minY + Math.random() * (maxY - minY);
 
