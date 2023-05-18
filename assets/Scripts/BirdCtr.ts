@@ -10,25 +10,25 @@ export class BirdCtr extends Component {
     private speed: number = 0;
     public sp : number = 0;
 
-    onLoad(){
+    protected onLoad() : void{
         input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
     //bird fly
-    birdFly() {
+    public birdFly() : void {
         this.speed -= 0.05; //drop
         this.sp = this.node.position.y;
         this.sp += this.speed;
         this.node.setPosition(this.node.position.x, this.sp, 0);
 
-        var angle = -(this.speed/2) * 30;
-        if (angle >= 30){
-            angle = 30;
+        var angle = -(this.speed/2) * 20;
+        if (angle >= 20){
+            angle = 20;
         }
         this.node.angle = -angle;
     }
 
-    onTouchStart (event: EventTouch) {
+    protected onTouchStart (event: EventTouch) : void {
         this.speed = 2; //fly
     }
 }

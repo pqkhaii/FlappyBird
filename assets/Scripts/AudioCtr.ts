@@ -24,21 +24,21 @@ export class AudioCtr extends Component {
         // Assign the component to the global variable _audioSource
         this._audioSource = audioSource;
 
-        this.btnOnAudio.active = false;
+        this.btnOffAudio.active = false;
     }
 
     protected playAudio () {
         // Play the music
         this._audioSource.play();
-        this.btnOffAudio.active = true;
-        this.btnOnAudio.active = false;
+        this.btnOffAudio.active = false;
+        this.btnOnAudio.active = true;
     }
 
     protected pauseAudio () {
         // Pause the music
         this._audioSource.stop();
-        this.btnOnAudio.active = true;
-        this.btnOffAudio.active = false;
+        this.btnOnAudio.active = false;
+        this.btnOffAudio.active = true;
     }
 }
 

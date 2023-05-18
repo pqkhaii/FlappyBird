@@ -36,13 +36,14 @@ export class ResultCtr extends Component {
     private maxScoreStorage : number = 0;
     private scoreArray : number[] = [];
 
-    updateScore(num: number) {
+    protected updateScore(num: number) : void {
         this.currentScore = num;
         
         this.ScoreLabel.string = ('' + this.currentScore);
         // console.log(userData)
     }
-    start(): void {
+
+    protected start(): void {
         var getScore = sys.localStorage.getItem('score');
         if(getScore){
             //read data
@@ -52,11 +53,11 @@ export class ResultCtr extends Component {
         }
     }
 
-    addScore() {
+    public addScore() : void {
         this.updateScore(this.currentScore += 1)
     }
 
-    showResults() {
+    public showResults() : void {
         this.scoreArray.push(this.currentScore);
 
         sys.localStorage.setItem('score', JSON.stringify(this.scoreArray));
@@ -70,7 +71,7 @@ export class ResultCtr extends Component {
         this.bgGameOver.node.active = true;
     }
 
-    hideResults() {
+    public hideResults() : void {
         this.HighScore.node.active = false;
         this.ResultEnd.active = false;
         this.bgScore.node.active = false;

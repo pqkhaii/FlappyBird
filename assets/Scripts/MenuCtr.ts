@@ -8,7 +8,7 @@ export class MenuCtr extends Component {
     public NodeSaveBlue : boolean = false;
     public NodeSaveRed : boolean = false;
 
-    protected onTouchCancel() {
+    protected onTouchCancel() : void {
         director.loadScene('main')
     }
 

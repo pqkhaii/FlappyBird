@@ -3,22 +3,21 @@ const { ccclass, property } = _decorator;
 
 @ccclass('SaveNode')
 export class SaveNode extends Component {
-    public NodeSaveBlue : boolean = false;
+    public NodeSaveGreen : boolean = false;
     public NodeSaveRed : boolean = false;
 
-    onTouchBtnRed() {
+    protected onTouchBtnRed() : void {
         this.NodeSaveRed = true;
-        this.NodeSaveBlue = false;
+        this.NodeSaveGreen = false;
         director.addPersistRootNode(this.node)
         director.loadScene('main')
     }
 
-    onTouchBtnBlue() {
-        this.NodeSaveBlue = true;
+    protected onTouchBtnGreen() : void {
+        this.NodeSaveGreen = true;
         this.NodeSaveRed = false;
         director.addPersistRootNode(this.node)
         director.loadScene('main')
     }
-
 }
 

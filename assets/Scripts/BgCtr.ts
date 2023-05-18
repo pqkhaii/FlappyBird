@@ -28,17 +28,17 @@ export class BgCtr extends Component {
     public bgWith1:number;
     public bgWith2:number;
 
-    public tempStartLocation0 = new Vec3;
-    public tempStartLocation1 = new Vec3;
-    public tempStartLocation2 = new Vec3;
+    public tempStartLocation0 = new Vec3();
+    public tempStartLocation1 = new Vec3();
+    public tempStartLocation2 = new Vec3();
 
     public gameSpeed:number = 200;
 
-    onload()  {
+    protected onload() : void {
         this.startUp();
     }
 
-    startUp(){
+    protected startUp() : void{
       
         // this.tempStartLocation0.x = 480;
         // this.tempStartLocation1.x = 1430;
@@ -49,7 +49,7 @@ export class BgCtr extends Component {
         this.bg2.setPosition(2340,0,0)
     }
     
-    update(deltaTime: number) {
+    protected update(deltaTime: number) : void {
         this.tempStartLocation0 = this.bg0.position; // gán vị trí tính toán
         this.tempStartLocation1 = this.bg1.position;
         this.tempStartLocation2 = this.bg2.position;
