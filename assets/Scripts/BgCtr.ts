@@ -1,4 +1,4 @@
-import { _decorator, Canvas, Component, director, log, Node, UITransform, Vec3 } from 'cc';
+import { _decorator, Canvas, Component, director, instantiate, log, Node, UITransform, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('BgCtr')
@@ -43,17 +43,14 @@ export class BgCtr extends Component {
         
         //out of screen
         if(this.startLocation0.x <= -473){ 
-            console.log('1')
             this.startLocation0.x = 2320; //1418
         }
         
         if(this.startLocation1.x <= -473){
-            console.log('2')
             this.startLocation1.x = 2320;
         }
 
         if(this.startLocation2.x <= -473){
-            console.log('3')
             this.startLocation2.x = 2320;
         }
 
@@ -62,4 +59,3 @@ export class BgCtr extends Component {
         this.bg2.setPosition(this.startLocation2);
     }
 }
-

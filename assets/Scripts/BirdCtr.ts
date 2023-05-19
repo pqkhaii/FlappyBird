@@ -1,12 +1,16 @@
 import { _decorator, CCFloat, Component, Node, Vec3, Animation, tween, easing, EventTouch, input, Input, director, sys, game} from 'cc';
-import { GameCtr } from './GameCtr';
+import { AudioCtr } from './AudioCtr';
 
 const { ccclass, property } = _decorator;
 
 @ccclass('BirdCtr')
 export class BirdCtr extends Component {
 
- 
+    @property({
+        type: AudioCtr
+    })
+    private AudioCtr: AudioCtr;
+
     private speed: number = 0;
     public sp : number = 0;
 
@@ -14,7 +18,6 @@ export class BirdCtr extends Component {
         input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
     }
 
-    //bird fly
     public birdFly() : void {
         this.speed -= 0.05; //drop
         this.sp = this.node.position.y;
@@ -29,7 +32,7 @@ export class BirdCtr extends Component {
     }
 
     protected onTouchStart (event: EventTouch) : void {
-        this.speed = 2; //fly
+        this.speed = 2;
+        this.AudioCtr.onAudio(0);
     }
 }
-
