@@ -9,7 +9,7 @@ export class SaveNode extends Component {
     protected onTouchBtnRed() : void {
         this.NodeSaveRed = true;
         this.NodeSaveGreen = false;
-        
+
         director.addPersistRootNode(this.node);
         // console.log("red");
 

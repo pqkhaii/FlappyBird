@@ -8,85 +8,58 @@ export class BgCtr extends Component {
         type:Node,
         tooltip: 'Background 0'
     })
-    public bg0: Node;
+    private bg0: Node;
 
     @property({
         type:Node,
         tooltip: 'Background 1'
     })
-    public bg1: Node;
+    private bg1: Node;
 
     @property({
         type:Node,
         tooltip: 'Background 2'
     })
-    public bg2: Node;
+    private bg2: Node;
 
-    
-
-    public bgWith0:number;
-    public bgWith1:number;
-    public bgWith2:number;
-
-    public tempStartLocation0 = new Vec3();
-    public tempStartLocation1 = new Vec3();
-    public tempStartLocation2 = new Vec3();
+    private startLocation0 = new Vec3(0, 0, 0);
+    private startLocation1 = new Vec3(0, 0, 0);
+    private startLocation2 = new Vec3(0, 0, 0);
 
     public gameSpeed:number = 200;
-
-    protected onload() : void {
-        this.startUp();
-    }
-
-    protected startUp() : void{
-        this.bg0.setPosition(480,0,0)
-        this.bg1.setPosition(1430,0,0)
-        this.bg2.setPosition(2340,0,0)
-    }
     
     protected update(deltaTime: number) : void {
-        this.tempStartLocation0 = this.bg0.position; // gán vị trí tính toán
-        this.tempStartLocation1 = this.bg1.position;
-        this.tempStartLocation2 = this.bg2.position;
+        // set location
+        this.startLocation0 = this.bg0.position; 
+        this.startLocation1 = this.bg1.position;
+        this.startLocation2 = this.bg2.position;
+
+        let moveBg = this.gameSpeed * deltaTime;
         
-        this.tempStartLocation0.x -= this.gameSpeed * deltaTime; //dịch chuyển bg
-        this.tempStartLocation1.x -= this.gameSpeed * deltaTime;
-        this.tempStartLocation2.x -= this.gameSpeed * deltaTime;
+        //move background
+        this.startLocation0.x -= moveBg; 
+        this.startLocation1.x -= moveBg;
+        this.startLocation2.x -= moveBg;
         
-        if(this.tempStartLocation0.x <= -473){ //out of screen
+        //out of screen
+        if(this.startLocation0.x <= -473){ 
             console.log('1')
-            this.tempStartLocation0.x = 2320; //1418
+            this.startLocation0.x = 2320; //1418
         }
         
-        if(this.tempStartLocation1.x <= -473){
+        if(this.startLocation1.x <= -473){
             console.log('2')
-            this.tempStartLocation1.x = 2320;
+            this.startLocation1.x = 2320;
         }
 
-        if(this.tempStartLocation2.x <= -473){
+        if(this.startLocation2.x <= -473){
             console.log('3')
-            this.tempStartLocation2.x = 2320;
+            this.startLocation2.x = 2320;
         }
 
-        this.bg0.setPosition(this.tempStartLocation0);
-        this.bg1.setPosition(this.tempStartLocation1);
-        this.bg2.setPosition(this.tempStartLocation2);
+        this.bg0.setPosition(this.startLocation0);
+        this.bg1.setPosition(this.startLocation1);
+        this.bg2.setPosition(this.startLocation2);
     }
 }
-
-// if(this.tempStartLocation0.x <= -473){
-//     this.tempStartLocation0.x = 2360;
-// }
-
-// if(this.tempStartLocation1.x <= -472){
-//     this.tempStartLocation1.x = 2360;
-// }
-
-// if(this.tempStartLocation2.x <= -472){
-//     this.tempStartLocation2.x = 2360;
-// }
-
-// this.bg0.setPosition(this.tempStartLocation0);
-// this.bg1.setPosition(this.tempStartLocation1);
-// this.bg1.setPosition(this.tempStartLocation2);
 

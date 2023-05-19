@@ -4,13 +4,9 @@ const { ccclass, property } = _decorator;
 
 @ccclass('MenuCtr')
 export class MenuCtr extends Component {
-    
-    // public NodeSaveBlue : boolean = false;
-    // public NodeSaveRed : boolean = false;
 
     protected onTouchCancel() : void {
         director.loadScene('main')
     }
-
 }
 

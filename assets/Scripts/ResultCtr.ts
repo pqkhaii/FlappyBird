@@ -38,17 +38,16 @@ export class ResultCtr extends Component {
 
     protected updateScore(num: number) : void {
         this.currentScore = num;
-        
-        this.ScoreLabel.string = ('' + this.currentScore);
-        // console.log(userData)
+        this.ScoreLabel.string = this.currentScore.toString();
     }
 
     protected start(): void {
         var getScore = sys.localStorage.getItem('score');
+        
         if(getScore){
             //read data
             this.scoreArray = JSON.parse(getScore);
-            
+
             localStorage.setItem('score', JSON.stringify(this.scoreArray))
         }
     }
@@ -63,7 +62,7 @@ export class ResultCtr extends Component {
         sys.localStorage.setItem('score', JSON.stringify(this.scoreArray));
         var getScore = JSON.parse(sys.localStorage.getItem('score'));
 
-        this.HighScore.string = '' + Math.max(...getScore)
+        this.HighScore.string = Math.max(...getScore).toString();
         
         this.ResultEnd.active = true;
         this.HighScore.node.active = true;
