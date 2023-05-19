@@ -5,26 +5,26 @@ import { BgCtr } from './BgCtr';
 import { BirdCtr } from './BirdCtr';
 import { ResultCtr } from './ResultCtr';
 import { SaveNode } from './SaveNode';
-// import { PipePool } from './PipePool';
+// import { SaveNode } from './SaveNode';
 
 @ccclass('GameCtr')
 export class GameCtr extends Component {
 
     @property({
         type: Component,
-        tooltip: 'This is bg'
+        tooltip: 'Background'
     })
     public bg: BgCtr
 
     @property({
         type: ResultCtr,
-        tooltip: 'Result here'
+        tooltip: 'Result'
     })
     public result: ResultCtr;
 
     @property({
         type: BirdCtr,
-        tooltip: 'This is Bird'
+        tooltip: 'Bird'
     })
     public BirdCtr: BirdCtr
 
@@ -32,42 +32,37 @@ export class GameCtr extends Component {
     pipePrefab: Prefab = null;
 
     @property({type:Node})
-    pipeNode : Node = null;
+    pipeNode: Node = null;
 
     pipe: Node[] = [null, null, null]
 
     @property({
         type: Node
     })
-    private btnPlay : Node = null;
+    private btnPlay: Node = null;
 
     private isClick = false;
     private isCreatePipe = false;
-    private hitPipe : boolean = false;
+    private hitPipe: boolean = false;
+
+    private sceneMain: string = 'main';
+    private sceneMenu: string = 'menu';
 
     @property({
-        type : Node
+        type: Node
     })
-    private btnOption : Node = null;
+    private btnOption: Node = null;
 
     protected onLoad() : void{
         this.handleOnload();
+        this.handlePersistNode();
+    }
 
+    protected handlePersistNode(): void {
         let parameters = find('Persist_Node');
-        //console.log(parameters)
         let BirdParameters = parameters.getComponent(SaveNode);
 
-        // director.addPersistRootNode(parameters))
-
         if(BirdParameters.NodeSaveGreen == true ){
-
-            // const url = 'assets/Images/birdgreen1/spriteFrame';
-            // resources.load(url, SpriteFrame, (err: any, spriteFrame) => {
-            //     const sprite = this.BirdCtr.getComponent(Sprite);
-            //     sprite.spriteFrame = spriteFrame;
-            //     console.log(spriteFrame)
-            //   });
-
             let getColor = this.BirdCtr.getComponent(Sprite)
             getColor.color = new Color(144, 238, 144)
         }
@@ -79,6 +74,8 @@ export class GameCtr extends Component {
     }
 
     protected handleOnload() : void {
+        this.startGame();
+
         this.isClick = false;
         this.isCreatePipe = false;
         
@@ -173,12 +170,17 @@ export class GameCtr extends Component {
     }
 
     protected onTouchTryAgain() : void {
-        director.loadScene('main');
+        director.loadScene(this.sceneMain);
         this.startGame();
     }
 
     protected onTouchOption() : void {
-        director.loadScene('menu')
+        director.loadScene(this.sceneMenu)
+    }
+
+    protected onTouchHome() : void {
+        director.loadScene(this.sceneMain)
+        this.startGame();
     }
 
     protected startGame() : void {

@@ -9,15 +9,21 @@ export class SaveNode extends Component {
     protected onTouchBtnRed() : void {
         this.NodeSaveRed = true;
         this.NodeSaveGreen = false;
-        director.addPersistRootNode(this.node)
-        director.loadScene('main')
+        
+        director.addPersistRootNode(this.node);
+        // console.log("red");
+
+        director.loadScene('main');
     }
 
     protected onTouchBtnGreen() : void {
         this.NodeSaveGreen = true;
         this.NodeSaveRed = false;
-        director.addPersistRootNode(this.node)
-        director.loadScene('main')
+
+        director.addPersistRootNode(this.node);
+        // console.log("green");
+
+        director.loadScene('main');
     }
 }
 

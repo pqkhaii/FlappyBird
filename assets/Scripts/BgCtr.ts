@@ -39,11 +39,6 @@ export class BgCtr extends Component {
     }
 
     protected startUp() : void{
-      
-        // this.tempStartLocation0.x = 480;
-        // this.tempStartLocation1.x = 1430;
-        // this.tempStartLocation2.x = 2360;
-        
         this.bg0.setPosition(480,0,0)
         this.bg1.setPosition(1430,0,0)
         this.bg2.setPosition(2340,0,0)
@@ -59,17 +54,18 @@ export class BgCtr extends Component {
         this.tempStartLocation2.x -= this.gameSpeed * deltaTime;
         
         if(this.tempStartLocation0.x <= -473){ //out of screen
-            // console.log('1')
-            this.tempStartLocation0.x = 1418;
+            console.log('1')
+            this.tempStartLocation0.x = 2320; //1418
         }
         
         if(this.tempStartLocation1.x <= -473){
-            // console.log('2')
-            this.tempStartLocation1.x = 1418;
+            console.log('2')
+            this.tempStartLocation1.x = 2320;
         }
+
         if(this.tempStartLocation2.x <= -473){
-            // console.log('3')
-            this.tempStartLocation2.x = 1418;
+            console.log('3')
+            this.tempStartLocation2.x = 2320;
         }
 
         this.bg0.setPosition(this.tempStartLocation0);
