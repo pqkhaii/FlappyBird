@@ -20,47 +20,46 @@ export class ResultCtr extends Component {
     private ResultEnd: Node;
 
     @property({
-        type : Sprite
+        type: Sprite
     })
-    private bgScore : Sprite
+    private bgScore: Sprite
 
     @property({
-        type : Sprite
+        type: Sprite
     })
-    private bgGameOver : Sprite
+    private bgGameOver: Sprite
 
 
     maxScore: number = 0;
     currentScore: number = 0;
 
-    private maxScoreStorage : number = 0;
-    private scoreArray : number[] = [];
+    private scoreArray: number[] = [];
 
-    protected updateScore(num: number) : void {
-        this.currentScore = num;
-        this.ScoreLabel.string = this.currentScore.toString();
-    }
-
+    private keyScore: string = 'score'
+    
     protected start(): void {
-        var getScore = sys.localStorage.getItem('score');
+        var getScore = sys.localStorage.getItem(this.keyScore);
         
         if(getScore){
-            //read data
             this.scoreArray = JSON.parse(getScore);
-
-            localStorage.setItem('score', JSON.stringify(this.scoreArray))
+            localStorage.setItem(this.keyScore, JSON.stringify(this.scoreArray))
         }
     }
 
-    public addScore() : void {
+    protected updateScore(num: number): void {
+        this.currentScore = num;
+        this.ScoreLabel.string = this.currentScore.toString();
+    }
+    
+    public addScore(): void {
         this.updateScore(this.currentScore += 1)
     }
 
-    public showResults() : void {
+    public showResults(): void {
         this.scoreArray.push(this.currentScore);
 
-        sys.localStorage.setItem('score', JSON.stringify(this.scoreArray));
-        var getScore = JSON.parse(sys.localStorage.getItem('score'));
+        sys.localStorage.setItem(this.keyScore, JSON.stringify(this.scoreArray));
+        var getScore = JSON.parse(sys.localStorage.getItem(this.keyScore));
 
         this.HighScore.string = Math.max(...getScore).toString();
         
@@ -70,7 +69,7 @@ export class ResultCtr extends Component {
         this.bgGameOver.node.active = true;
     }
 
-    public hideResults() : void {
+    public hideResults(): void {
         this.HighScore.node.active = false;
         this.ResultEnd.active = false;
         this.bgScore.node.active = false;

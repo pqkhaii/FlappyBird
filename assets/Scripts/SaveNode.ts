@@ -3,8 +3,6 @@ const { ccclass, property } = _decorator;
 
 @ccclass('SaveNode')
 export class SaveNode extends Component {
-    public NodeSaveGreen : boolean = false;
-    public NodeSaveRed : boolean = false;
- 
+    public NodeBird : boolean = false;
+    public NodeBird2 : boolean = false;
 }
-

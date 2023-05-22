@@ -23,10 +23,8 @@ export class AudioCtr extends Component {
     })
     private btnOffAudio: Node = null;
 
-    protected onLoad() {
-        const _audioSource = this.audioSource.node.getComponent(AudioSource) ;
-
-        // Assign the component to the global variable _audioSource
+    protected onLoad(): void {
+        const _audioSource = this.audioSource.node.getComponent(AudioSource!);
         this.audioSource = _audioSource;
 
         this.btnOffAudio.active = false;
@@ -37,16 +35,16 @@ export class AudioCtr extends Component {
         this.audioSource.playOneShot(clip);
     }
 
-    protected playAudio () {
-        // Play the music
+    protected playAudio(): void {
         this.audioSource.volume = 1;
+
         this.btnOffAudio.active = false;
         this.btnOnAudio.active = true;
     }
 
-    protected pauseAudio () {
-        // Pause the music
+    protected pauseAudio(): void {
         this.audioSource.volume = 0;
+
         this.btnOnAudio.active = false;
         this.btnOffAudio.active = true;
     }

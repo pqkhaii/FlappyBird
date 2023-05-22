@@ -28,7 +28,7 @@ export class BgCtr extends Component {
 
     public gameSpeed:number = 200;
     
-    protected update(deltaTime: number) : void {
+    protected update(deltaTime: number): void {
         // set location
         this.startLocation0 = this.bg0.position; 
         this.startLocation1 = this.bg1.position;
@@ -43,7 +43,7 @@ export class BgCtr extends Component {
         
         //out of screen
         if(this.startLocation0.x <= -473){ 
-            this.startLocation0.x = 2320; //1418
+            this.startLocation0.x = 2320;   //1418
         }
         
         if(this.startLocation1.x <= -473){
