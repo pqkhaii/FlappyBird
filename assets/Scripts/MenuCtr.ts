@@ -1,4 +1,4 @@
-import { _decorator, Color, Component, director, find, Node } from 'cc';
+import { _decorator, Component, director, find, Node } from 'cc';
 import { SaveNode } from './SaveNode';
 const { ccclass, property } = _decorator;
 

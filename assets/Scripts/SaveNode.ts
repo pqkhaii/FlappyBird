@@ -1,4 +1,4 @@
-import { _decorator, Component, director, Node } from 'cc';
+import { _decorator, Component} from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('SaveNode')

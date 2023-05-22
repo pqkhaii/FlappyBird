@@ -1,4 +1,4 @@
-import { _decorator, CCFloat, Component, Node, Vec3, Animation, tween, easing, EventTouch, input, Input, director, sys, game} from 'cc';
+import { _decorator, Component, EventTouch, input, Input} from 'cc';
 import { AudioCtr } from './AudioCtr';
 
 const { ccclass, property } = _decorator;

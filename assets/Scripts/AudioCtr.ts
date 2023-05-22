@@ -1,10 +1,10 @@
-import { _decorator, assert, AudioClip, AudioSource, Component, Node, Texture2D } from 'cc';
+import { _decorator, assert, AudioClip, AudioSource, Component, Node } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('AudioCtr')
 export class AudioCtr extends Component {
     @property({
-        type : AudioSource
+        type: AudioSource
     })
     private audioSource: AudioSource = null;
 

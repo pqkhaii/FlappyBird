@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Prefab, instantiate, director, Contact2DType, Collider2D, IPhysics2DContact,find, math} from 'cc';
+import { _decorator, Component, Node, Prefab, instantiate, director, Contact2DType, Collider2D, IPhysics2DContact, find, math} from 'cc';
 const { ccclass, property } = _decorator;
 
 import { BgCtr } from './BgCtr';

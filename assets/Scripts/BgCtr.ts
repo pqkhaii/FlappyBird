@@ -1,4 +1,4 @@
-import { _decorator, Canvas, Component, director, instantiate, log, Node, UITransform, Vec3 } from 'cc';
+import { _decorator, Component, Node, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('BgCtr')

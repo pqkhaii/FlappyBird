@@ -33,8 +33,7 @@ export class ResultCtr extends Component {
     currentScore: number = 0;
 
     private scoreArray: number[] = [];
-
-    private keyScore: string = 'score'
+    private keyScore: string = 'score';
     
     protected start(): void {
         var getScore = sys.localStorage.getItem(this.keyScore);
