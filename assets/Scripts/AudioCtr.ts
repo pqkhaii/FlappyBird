@@ -16,12 +16,12 @@ export class AudioCtr extends Component {
     @property({
         type: Node
     })
-    private btnOnAudio: Node = null;
+    public btnOnAudio: Node = null;
 
     @property({
-        type : Node
+        type: Node
     })
-    private btnOffAudio: Node = null;
+    public btnOffAudio: Node = null;
 
     protected onLoad(): void {
         const _audioSource = this.audioSource.node.getComponent(AudioSource!);
@@ -35,14 +35,14 @@ export class AudioCtr extends Component {
         this.audioSource.playOneShot(clip);
     }
 
-    protected playAudio(): void {
+    public playAudio(): void {
         this.audioSource.volume = 1;
 
         this.btnOffAudio.active = false;
         this.btnOnAudio.active = true;
     }
 
-    protected pauseAudio(): void {
+    public pauseAudio(): void {
         this.audioSource.volume = 0;
 
         this.btnOnAudio.active = false;

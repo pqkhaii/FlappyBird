@@ -51,6 +51,16 @@ export class GameCtr extends Component {
     })
     private AudioCtr: AudioCtr;
 
+    @property({
+        type: Node
+    })
+    public btnPause: Node = null;
+
+    @property({
+        type: Node
+    })
+    public btnResume: Node = null;
+
     private hitPipe: boolean = false;
 
     private sceneMain: string = 'main';
@@ -65,6 +75,8 @@ export class GameCtr extends Component {
         this.startGame();
 
         this.hitPipe = false;
+
+        this.btnPause.active = false;
 
         this.result.hideResults();
         this.result.ScoreLabel.node.active = true;
@@ -170,6 +182,18 @@ export class GameCtr extends Component {
         this.startGame();
     }
 
+    protected onTouchPause(): void {
+        director.pause();
+        this.btnPause.active = true;
+        this.btnResume.active = false;
+    }
+
+    protected onTouchResume(): void {
+        director.resume();
+        this.btnPause.active = false;
+        this.btnResume.active = true;
+    }
+
     protected startGame(): void {
         this.result.hideResults();
         director.resume();
@@ -180,6 +204,8 @@ export class GameCtr extends Component {
     protected gameOver(): void {
         this.result.showResults();
         director.pause();
+        this.btnPause.active = false;
+        this.btnResume.active = false;
     }
 
     protected onCollisionEnter(): void {

@@ -29,7 +29,6 @@ export class ResultCtr extends Component {
     })
     private bgGameOver: Sprite
 
-
     maxScore: number = 0;
     currentScore: number = 0;
 
